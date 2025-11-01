@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Kad Pengenalan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">OCR Kad Pengenalan</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" class="form-control mb-2" required>
+        <button type="submit" class="btn btn-primary">Proses OCR</button>
+    </form>
+
+    {% if ocr_results %}
+        <h3 class="mt-4">Hasil OCR:</h3>
+        <ul class="list-group">
+            {% for label, text in ocr_results.items() %}
+            <li class="list-group-item"><strong>{{ label }}:</strong> {{ text }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="mt-4">Imej dengan ROI:</h3>
+        <img src="{{ url_for('static', filename='outputs/hasil_ocr.png') }}" class="img-fluid mt-2" alt="Hasil OCR">
+    {% endif %}
+</div>
+</body>
+</html>
