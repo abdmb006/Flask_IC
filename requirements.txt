@@ -1,0 +1,8 @@
+Flask==3.0.3
+gunicorn==21.2.0
+easyocr==1.7.1
+opencv-python==4.10.0.84
+Pillow==10.3.0
+torch==2.3.0
+matplotlib==3.9.2
+numpy==1.26.4
